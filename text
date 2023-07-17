@@ -1,0 +1,149 @@
+import React, {useState} from 'react'
+// import {AiFillHeart,AiOutlineHeart } from 'react-icons/ai'
+import {GiCoffeeBeans} from 'react-icons/gi'
+import {data} from './data/data'
+import Title from './Title'
+import {BsFilterCircle} from 'react-icons/bs'
+import {LuRussianRuble} from 'react-icons/lu'
+// import {TbCircleLetterG} from 'react-icons/tb'
+
+export const Food = (index) => {
+  const [foods, setFoods] = useState(data)
+ 
+  // FIlter type 
+
+  const filterType = (category) => {
+    setFoods(
+      data.filter((item) => {
+        return item.category === category
+      })
+    )
+  }
+
+  const filterByPrice = (price) => {
+    setFoods(
+      data.filter((item) => {
+        return item.price === price
+      })
+    )
+  }
+
+  return (
+    <div className='px-4 border-b-[1px] border-b-slate-700 py-20'>
+      <Title text='Меню' icon={<GiCoffeeBeans/>}/>
+
+      {/* Filter Row */}
+      <div className='flex flex-col lg:flex-row justify-between'>
+        {/* Fliter Type */}
+        <div>
+          <Title text='Фильтр' icon={<BsFilterCircle/>}/>
+          <div className='flex justfiy-between flex-wrap'>
+            <button
+              onClick={() => setFoods(data)}
+              className='m-1 border-inherit text-white hover:bg-slate-600 hover:text-white'
+            >
+              Все
+            </button>
+            <button
+              onClick={() => filterType('coffee')}
+              className='m-1 border-inherit text-white hover:bg-slate-600 hover:text-white'
+
+
+            >
+              Кофе
+            </button>
+            <button
+              onClick={() => filterType('tea')}
+              className='m-1 border-inherit text-white hover:bg-slate-600 hover:text-white'
+
+
+            >
+              Чай
+            </button>
+            <button
+              onClick={() => filterType('salad')}
+              className='m-1 border-inherit text-white hover:bg-slate-600 hover:text-white'
+
+            >
+              Салаты
+            </button>
+          </div>
+        </div>
+
+        {/* Filter price */}
+        <div>
+          <Title text='Стоимость' icon={<LuRussianRuble/>}/>
+
+          <div className='flex justify-between max-w-[390px] w-full'>
+            <button 
+              onClick={() => filterByPrice('₽')}
+              className='m-1 border-inherit text-white hover:bg-slate-600 hover:text-white'
+
+              >₽</button>
+            <button 
+              onClick={() => filterByPrice('₽₽')}
+              className='m-1 border-inherit text-white hover:bg-slate-600 hover:text-white'
+
+              >₽₽</button>
+            <button 
+              onClick={() => filterByPrice('₽₽₽')}
+              className='m-1 border-inherit text-white hover:bg-slate-600 hover:text-white'
+
+              >₽₽₽</button>
+            <button 
+              onClick={() => filterByPrice('₽₽₽₽')}
+              className='m-1 border-inherit text-white hover:bg-slate-600 hover:text-white'
+
+              >₽₽₽₽</button>
+          </div>
+        </div>
+      </div>
+      {/* Display foods */}
+      <div className='grid grid-cols-2 lg:grid-cols-4 gap-6 pt-4'>
+        {foods.map((item, index) => (
+          <div key={index} className='shadow-lg rounded-lg hover:scale-105 duration-700'>
+            <img 
+              className='w-full h-[200px] object-cover rounded-t-lg'
+              src={item.image} alt={item.name} />
+            <div className='flex justify-between px-2 py-4 text-white'>
+              <p className='font-bold'>{item.name}</p>
+              <p><span className='text-white p-1'>{item.price}</span></p>
+            </div>
+          </div>
+        ) )}
+      </div>
+
+    </div>
+  )
+}
+
+export default Food
+
+
+
+
+
+ {/* <a href='https://polyana.co/restaurant/%D0%BA%D1%8D%D1%80%D1%80%D0%B8/' target='_blank' rel='noreferrer'>
+      <div className='w-80 h-80 overflow-hidden relative rounded-lg group'>
+        <img className='object-cover translate-y-0 group-hover:-translate-y-[20%] transition-transform duration-[3s]' width={350} height={350} src={carryMenu} alt=''/>
+        <p className='absolute hidden group-hover:inline-block bottom-0 w-full py-1 bg-orange-600 text-white text-center font-semibold duration-600'>Carrie Самара</p>
+      </div>
+    </a>
+    <a href='https://polyana.co/wp-content/uploads/2021/06/carrie_moscow_menu-1.pdf' target='_blank' rel='noreferrer'>
+      <div className='w-80 h-80 overflow-hidden relative rounded-lg group'>
+        <img className='object-cover translate-y-0 group-hover:-translate-y-[20%] transition-transform duration-[3s]' width={350} height={350} src={starsCoffee} alt=''/>
+        <p className='absolute hidden group-hover:inline-block bottom-0 w-full py-1 bg-orange-600 text-white text-center font-semibold duration-600'>Stars Coffee</p>
+      </div>
+    </a>
+    <a href='https://twinzcoffee.ru/' target='_blank' rel='noreferrer'>
+      <div className='w-80 h-80 overflow-hidden relative rounded-lg group'>
+        <img className='object-cover translate-y-0 group-hover:-translate-y-[20%] transition-transform duration-[3s]' width={350} height={350} src={twinzCoffee} alt=''/>
+        <p className='absolute hidden group-hover:inline-block bottom-0 w-full py-1 bg-orange-600 text-white text-center font-semibold duration-600'>Twinz Coffee</p>
+      </div>
+    </a>
+    <a href='https://coffeebean.ru/adresa/samara-leningradskaia/' target='_blank' rel='noreferrer'>
+      <div className='w-80 h-80 overflow-hidden relative rounded-lg group'>
+        <img className='object-cover translate-y-0 group-hover:-translate-y-[20%] transition-transform duration-[3s]' width={350} height={350} src={coffeeB} alt=''/>
+        <p className='absolute hidden group-hover:inline-block bottom-0 w-full py-1 bg-orange-600 text-white text-center font-semibold duration-600'>Coffee Bean</p>
+      </div>
+    </a> */}
