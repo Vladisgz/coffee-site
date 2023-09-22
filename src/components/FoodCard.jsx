@@ -2,7 +2,6 @@ import React from "react";
 
 const FoodCard = ({ title, link, img }) => {
   return (
-    // <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 place-items-center' >
     <a href={link} target="_blank" rel="noreferrer">
       <div className="w-80 h-80 overflow-hidden relative rounded-lg group">
         <img
@@ -17,7 +16,6 @@ const FoodCard = ({ title, link, img }) => {
         </p>
       </div>
     </a>
-    // </div>
   );
 };
 

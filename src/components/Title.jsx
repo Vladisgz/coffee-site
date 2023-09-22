@@ -1,9 +1,4 @@
-// import { ReactNode } from "react";
 import React from "react";
-// interface Props {
-// 	text: string;
-// 	icon: ReactNode;
-// }
 
 const Title = ({ text, icon }) => {
   return (

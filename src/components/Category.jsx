@@ -1,18 +1,12 @@
 import React from "react";
 import { categories } from "./data/data";
-// import Footer from "./Footer";
 
 const Category = () => {
   return (
     <div className="px-8 py-12">
-      {/* <h1 className='text-orange-600 font-bold text-4xl text-center'>Top Rated Menu Items</h1> */}
       <h1 className="text-center font-bold text-4xl leading-8 text-gray-800">
         Top Rated Menu Items
       </h1>
-
-      {/* CATEGORY */}
-
-      {/* <Footer />  */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6 py-6">
         {categories.map((item, index) => (
           <div
